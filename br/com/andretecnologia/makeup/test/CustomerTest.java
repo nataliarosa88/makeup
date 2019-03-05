@@ -25,14 +25,14 @@ public class CustomerTest {
 		/**
 		 * Instantiating the entity Customer
 		 */
-		Customer customer1 = new Customer();
+		Customer customer1 = new Customer(nameThatComesFromtheFrontEnd, emailThatComesFromtheFrontEnd, telefoneThatComesFromtheFrontEnd);
 		/**
 		 * Setting values to the attributes of the Class Customer [Creating the object named customerX]
 		 */
 		customer1.setCpf(cpfThatComesFromtheFrontEnd);
-		customer1.setName(nameThatComesFromtheFrontEnd);
-		customer1.setEmail(emailThatComesFromtheFrontEnd);
-		customer1.setTelefone(telefoneThatComesFromtheFrontEnd);
+		//customer1.setName(nameThatComesFromtheFrontEnd);
+		//customer1.setEmail(emailThatComesFromtheFrontEnd);
+		//customer1.setTelefone(telefoneThatComesFromtheFrontEnd);
 
 		/**
 		 * Starting DB Transactions

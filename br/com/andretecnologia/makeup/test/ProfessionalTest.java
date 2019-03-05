@@ -13,9 +13,10 @@ public class ProfessionalTest {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("makeup");
 		EntityManager em = emf.createEntityManager();
 		
-		Professional professional1 = new Professional();
+		Professional professional1 = new Professional("andre");
 		
-		professional1.setName("Andre");
+		//ja esta sendo passado no construtor por que ao menos o nome é obrigatorio
+		//professional1.setName("Andre");
 		professional1.setEmail("dedemac@me.com");
 		professional1.setMobile("19989501551");
 		

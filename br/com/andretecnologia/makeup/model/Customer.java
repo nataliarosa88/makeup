@@ -18,6 +18,16 @@ public class Customer {
 	private String email;
 	private String telefone;
 	
+	public Customer() {
+		
+	}
+	
+	public Customer(String name, String email, String telefone) {
+		this.name = name;
+		this.email = email;
+		this.telefone =  telefone;
+	}
+	
 	public long getId() {
 		return id;
 	}

@@ -15,6 +15,14 @@ private String name;
 private String email;
 private String mobile;
 
+public Professional() {
+	
+}
+
+public Professional (String name) {
+	this.name = name;
+}
+
 public long getId() {
 	return id;
 }

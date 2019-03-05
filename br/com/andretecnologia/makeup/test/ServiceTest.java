@@ -12,8 +12,8 @@ public static void main(String[] args) {
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("makeup");
 	EntityManager em = emf.createEntityManager();
 	
-	Service service1 = new Service();
-	service1.setDescription("makeup");
+	Service service1 = new Service("hair style");
+	//service1.setDescription("makeup");
 	
 	em.getTransaction().begin();		
 	em.persist(service1);

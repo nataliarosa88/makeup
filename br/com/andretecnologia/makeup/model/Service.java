@@ -11,6 +11,12 @@ public class Service {
 @GeneratedValue(strategy=GenerationType.IDENTITY)
 private long id;
 private String description;
+
+
+public Service(String description) {
+	this.description = description;
+}
+
 public long getId() {
 	return id;
 }
