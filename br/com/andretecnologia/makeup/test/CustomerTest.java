@@ -17,10 +17,10 @@ public class CustomerTest {
 		/**
 		 * For example values comming from the frontend
 		 */
-		String cpfThatComesFromtheFrontEnd = "102030";
-		String nameThatComesFromtheFrontEnd = "cris";
-		String emailThatComesFromtheFrontEnd = "cris@cris.com";
-		String telefoneThatComesFromtheFrontEnd = "1933854789";
+		String cpfThatComesFromtheFrontEnd = "02495426174";
+		String nameThatComesFromtheFrontEnd = "nat";
+		String emailThatComesFromtheFrontEnd = "nat@nat.com";
+		String telefoneThatComesFromtheFrontEnd = "19991409562";
 		
 		/**
 		 * Instantiating the entity Customer
