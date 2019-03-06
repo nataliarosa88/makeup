@@ -22,7 +22,8 @@ public class Customer {
 		
 	}
 	
-	public Customer(String name, String email, String telefone) {
+	public Customer(String cpf, String name, String email, String telefone) {
+		this.cpf = cpf;
 		this.name = name;
 		this.email = email;
 		this.telefone =  telefone;

@@ -1,45 +1,46 @@
 package br.com.andretecnologia.makeup.test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import static org.junit.Assert.assertSame;
 
+import java.io.IOException;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.junit.Test;
+
+import br.com.andretecnologia.makeup.factory.MakeupFactory;
+import br.com.andretecnologia.makeup.log.MakeupLog;
 import br.com.andretecnologia.makeup.model.Customer;
 
 public class CustomerTest {
-	public static void main(String[] args) {
-		/**
-		 * Preparing the entity manager factory (E.g. Customer, Professionals etc)
-		 */
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("makeup");
-		EntityManager em = emf.createEntityManager();
-		
-		/**
-		 * For example values comming from the frontend
-		 */
-		String cpfThatComesFromtheFrontEnd = "02495426174";
-		String nameThatComesFromtheFrontEnd = "nat";
-		String emailThatComesFromtheFrontEnd = "nat@nat.com";
-		String telefoneThatComesFromtheFrontEnd = "19991409562";
-		
-		/**
-		 * Instantiating the entity Customer
-		 */
-		Customer customer1 = new Customer(nameThatComesFromtheFrontEnd, emailThatComesFromtheFrontEnd, telefoneThatComesFromtheFrontEnd);
-		/**
-		 * Setting values to the attributes of the Class Customer [Creating the object named customerX]
-		 */
-		customer1.setCpf(cpfThatComesFromtheFrontEnd);
-		//customer1.setName(nameThatComesFromtheFrontEnd);
-		//customer1.setEmail(emailThatComesFromtheFrontEnd);
-		//customer1.setTelefone(telefoneThatComesFromtheFrontEnd);
-
-		/**
-		 * Starting DB Transactions
-		 */
-		em.getTransaction().begin();		
-		em.persist(customer1);
-		em.getTransaction().commit();
+	@Test
+	public void ShouldPersistOneCustomer() throws IOException {
+		EntityManager em = new MakeupFactory().getEntityManager();
+		Customer customerModel = new Customer("02495426174", "Natalia", "nataliag1988@gmail.com", "1991409562");
+		em.getTransaction().begin();
+		em.persist(customerModel);
+		em.flush();
+		System.out.println("Name : " + customerModel.getName());
+		{
+			Query query = em.createQuery("select c from Customer c where c.name=:param");
+			query.setParameter("param", customerModel.getName());
+			Customer customerDB = (Customer) query.getSingleResult();
+			assertSame(customerModel, customerDB);
+			customerModel.setName("Nataly");
+		}
+		em.merge(customerModel);
+		em.flush();
+		{
+			Query query = em.createQuery("select c from Customer c where c.name=:param");
+			query.setParameter("param", customerModel.getName());
+			Customer customerDB = (Customer) query.getSingleResult();
+			assertSame(customerModel, customerDB);
+		}
+		System.out.println("Name : " + customerModel.getName());
+		em.remove(customerModel);
 		em.close();
+		
+		new MakeupLog().setLog("CustomerTest", "Executou um teste");
 	}
 }

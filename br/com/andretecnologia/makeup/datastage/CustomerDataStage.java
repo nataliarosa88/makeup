@@ -1,4 +1,4 @@
-package br.com.andretecnologia.makeup.test;
+package br.com.andretecnologia.makeup.datastage;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 
 import br.com.andretecnologia.makeup.model.Customer;
 
-public class CustomerTestMultiple {
+public class CustomerDataStage {
 	public static void main(String[] args) {
 		/**
 		 * Preparing the entity manager factory (E.g. Customer, Professionals etc)

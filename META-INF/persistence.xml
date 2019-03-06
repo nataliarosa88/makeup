@@ -2,6 +2,9 @@
 	<persistence-unit name="makeup">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>br.com.andretecnologia.makeup.model.Customer</class>
+		<class>br.com.andretecnologia.makeup.model.Professional</class>
+		<class>br.com.andretecnologia.makeup.model.Service</class>
+		<class>br.com.andretecnologia.makeup.model.Categoria</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/makeup" />
