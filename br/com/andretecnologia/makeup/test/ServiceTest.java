@@ -17,8 +17,10 @@ import br.com.andretecnologia.makeup.model.Service;
 public class ServiceTest {
 	@Test
 	public void ShouldPersistOneService() throws IOException {
+		
 		Categoria categoria = new Categoria("Categoria Cabelereiros");
 		Service service = new Service("Serviço hair style", categoria);
+		
 		EntityManager em = new MakeupFactory().getEntityManager();
 		em.getTransaction().begin();
 		em.persist(categoria);

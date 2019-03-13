@@ -16,6 +16,7 @@ import br.com.andretecnologia.makeup.model.Customer;
 public class CustomerTest {
 	@Test
 	public void ShouldPersistOneCustomer() throws IOException {
+		
 		EntityManager em = new MakeupFactory().getEntityManager();
 		Customer customerModel = new Customer("02495426174", "Natalia", "nataliag1988@gmail.com", "1991409562");
 		em.getTransaction().begin();
