@@ -16,6 +16,10 @@ private String description;
 @OneToOne
 private Categoria categoria;
 
+public Service() {
+	
+}
+
 public Service(String description,  Categoria categoria) {
 	this.description = description;
 	this.categoria = categoria;

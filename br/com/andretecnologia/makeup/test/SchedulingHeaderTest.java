@@ -8,10 +8,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.com.andretecnologia.makeup.factory.MakeupFactory;
+import br.com.andretecnologia.makeup.model.Categoria;
 import br.com.andretecnologia.makeup.model.Customer;
 import br.com.andretecnologia.makeup.model.Professional;
 import br.com.andretecnologia.makeup.model.SchedulingHeader;
 import br.com.andretecnologia.makeup.model.SchedulingLine;
+import br.com.andretecnologia.makeup.model.Service;
 
 @SuppressWarnings("unchecked")
 public class SchedulingHeaderTest {
@@ -57,22 +59,21 @@ public class SchedulingHeaderTest {
 		schedulingHeader.setDate(LocalDate.now());
 		schedulingHeader.setTime(LocalTime.now());
 		
+		
+		Categoria categoria = new Categoria("beleza");
+		em.persist(categoria);
+		Service service = new Service("mascara", categoria);
+		em.persist(service);
+		
+		
 		SchedulingLine sl1 = new SchedulingLine();
-		sl1.setDescription("peruca");
+		sl1.setService(service);
 		em.persist(sl1);
 		
-		SchedulingLine sl2 = new SchedulingLine();
-		sl2.setDescription("mascara");
-		em.persist(sl2);
-		
-		
-		SchedulingLine sl3 = new SchedulingLine();
-		sl3.setDescription("botao");
-		em.persist(sl3);
+
 		
 		schedulingHeader.addLine(sl1);
-		schedulingHeader.addLine(sl2);
-		schedulingHeader.addLine(sl3);
+
 		
 		em.persist(schedulingHeader);
 		
@@ -90,7 +91,7 @@ public class SchedulingHeaderTest {
 			System.out.println(sh.getFormattedTime());
 			List<SchedulingLine> lines = sh.getLines();
 			for (SchedulingLine sl : lines) {
-				System.out.println("       " + sl.getDescription());
+				System.out.println("       " + sl.getService().getDescription());
 			}
 			
 		}		

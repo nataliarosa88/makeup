@@ -15,7 +15,6 @@ public class Categoria {
 	/**
 	 * Hibernate use only
 	 */
-	@Deprecated
 	public Categoria() {
 		
 	}

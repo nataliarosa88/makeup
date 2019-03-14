@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class SchedulingLine{
@@ -17,9 +18,8 @@ public class SchedulingLine{
 	private Long lineNumber;
 	
 	
-	//OneToOne
-	//trocar para objeto service get setter
-	private String  description;
+	@OneToOne
+	private Service service;
 	
     @ManyToOne
 	private SchedulingHeader schedulingHeader;
@@ -30,14 +30,6 @@ public class SchedulingLine{
 
 	public void setSchedulingHeader(SchedulingHeader schedulingHeader) {
 		this.schedulingHeader = schedulingHeader;
-	}
-//fazer um set service
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	//getSErvice Service(tipo)
-	public String getDescription() {
-		return description;
 	}
 	
     @Override
@@ -65,6 +57,14 @@ public class SchedulingLine{
 
 	public void setLineNumber(Long lineNumber) {
 		this.lineNumber = lineNumber;
+	}
+
+	public Service getService() {
+		return service;
+	}
+
+	public void setService(Service service) {
+		this.service = service;
 	}
 
 }

@@ -42,7 +42,6 @@ public class SchedulingHeader {
 
 	public void removeLine(SchedulingLine line) {
 		lines.remove(line);
-		line.setDescription(null);
 	}
 
 
