@@ -2,7 +2,6 @@ package br.com.andretecnologia.makeup.test;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -58,20 +57,17 @@ public class SchedulingHeaderTest {
 		schedulingHeader.setDate(LocalDate.now());
 		schedulingHeader.setTime(LocalTime.now());
 		
-		
-		
-		
 		SchedulingLine sl1 = new SchedulingLine();
-		sl1.setDescription("MAKE");
+		sl1.setDescription("peruca");
 		em.persist(sl1);
 		
 		SchedulingLine sl2 = new SchedulingLine();
-		sl2.setDescription("BIGODE");
+		sl2.setDescription("mascara");
 		em.persist(sl2);
 		
 		
 		SchedulingLine sl3 = new SchedulingLine();
-		sl3.setDescription("ESTEIRA");
+		sl3.setDescription("botao");
 		em.persist(sl3);
 		
 		schedulingHeader.addLine(sl1);
